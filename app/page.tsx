@@ -2,9 +2,9 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { NextPage } from 'next';
 
+import Brands from '@/components/shared/Brands';
 import Picture from '@/components/shared/Picture';
 import Social from '@/components/shared/Social';
-import Stats from '@/components/shared/Stats';
 import { Button } from '@/components/ui/button';
 
 const Home: NextPage = () => {
@@ -17,7 +17,11 @@ const Home: NextPage = () => {
             <h1 className="h1">
               Hello I&apos;m <br /> <span className="text-accent">Edward</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">Love to code</p>
+            <p className="max-w-[500px] mb-9 text-white/80">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+              facere veniam excepturi perferendis eligendi et atque quibusdam
+              error quisquam.
+            </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
                 variant="outline"
@@ -40,7 +44,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <Stats />
+      <Brands />
     </main>
   );
 };
