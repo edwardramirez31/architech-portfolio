@@ -1,8 +1,11 @@
+'use client';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 
 import Brands from '@/components/shared/Brands';
+import Features from '@/components/shared/Features';
 import Picture from '@/components/shared/Picture';
 import Social from '@/components/shared/Social';
 import { Button } from '@/components/ui/button';
@@ -12,15 +15,28 @@ const Home: NextPage = () => {
     <main className="h-full">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
-          <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Software Engineer</span>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 0.5, ease: 'easeInOut' },
+            }}
+            className="text-center xl:text-left order-2 xl:order-none"
+          >
+            <span className="text-xl text-white/80">
+              Hello! I&apos;m Edward
+            </span>
             <h1 className="h1">
-              Hello I&apos;m <br /> <span className="text-accent">Edward</span>
+              Turning business needs
+              <br /> <span className="h1 text-accent">into tech realities</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-              facere veniam excepturi perferendis eligendi et atque quibusdam
-              error quisquam.
+            <p className="max-w-[500px] mt-3 mb-9 text-white/80">
+              I excel in leveraging backend systems that serve as the backbone
+              for critical business operations, managing over thousands
+              cloud-based resources. Join me in redefining technological
+              boundaries.
+              {/* Discover my projects or drop me a line! */}
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
@@ -28,7 +44,7 @@ const Home: NextPage = () => {
                 size="lg"
                 className="flex items-center gap-2"
               >
-                <span>Get my CV</span>
+                <span>Explore my resume</span>
                 <FontAwesomeIcon icon={faDownload} className="text-xl" />
               </Button>
               <div className="mb-8 xl:mb-0">
@@ -38,12 +54,13 @@ const Home: NextPage = () => {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Picture />
           </div>
         </div>
       </div>
+      <Features />
       <Brands />
     </main>
   );

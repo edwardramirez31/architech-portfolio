@@ -11,24 +11,24 @@ const Picture: React.FunctionComponent = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' },
+          transition: { delay: 2, duration: 0.4, ease: 'easeInOut' },
         }}
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { delay: 2, duration: 0.4, ease: 'easeIn' },
+            transition: { delay: 1.6, duration: 0.4, ease: 'easeIn' },
           }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h=[498px] mix-blend-lighten absolute"
+          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
           <Image
-            src="/assets/profile.png"
+            src="/assets/prof2.jpg"
             priority
             quality={100}
             fill
             alt="Edward Ramirez photo"
-            className="object-contain"
+            className="rounded-full object-contain"
           />
         </motion.div>
         <motion.svg

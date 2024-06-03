@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 
 import './globals.css';
+import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -27,6 +28,7 @@ const RootLayout: React.FunctionComponent<
       <body className={jetbrainsMono.variable}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

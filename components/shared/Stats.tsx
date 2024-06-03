@@ -5,9 +5,10 @@ import CountUp from 'react-countup';
 
 const stats = [
   { value: 3, label: 'Years of experience' },
-  { value: 20, label: 'Projects completed' },
-  { value: 8, label: 'Technologies mastered' },
-  { value: 500, label: 'Code commits' },
+  { value: 20, label: 'Technologies used' },
+  { value: 700, label: 'Pull requests' },
+  // { value: 20, label: 'Projects completed' },
+  { value: 2000, label: 'Code commits' },
 ];
 
 const Stats: React.FunctionComponent = () => {
