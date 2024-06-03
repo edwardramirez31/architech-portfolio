@@ -9,9 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
 const socialLinks = [
-  { icon: faGithub, path: '' },
-  { icon: faYoutube, path: '' },
-  { icon: faLinkedinIn, path: '' },
+  { icon: faLinkedinIn, path: 'https://www.linkedin.com/in/edward-ramirez/' },
+  { icon: faGithub, path: 'https://github.com/edwardramirez31' },
+  {
+    icon: faYoutube,
+    path: 'https://www.youtube.com/@primearchitech',
+  },
 ];
 
 const Social: React.FunctionComponent<{

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
 import { fadeIn, textVariant } from '../utils/motion';
@@ -39,44 +40,54 @@ const Brands: React.FunctionComponent = () => {
           className="grid grid-cols-1 gap-8 md:grid-cols-5 h-[400px] md:h-12"
         >
           <div className="flex justify-center relative">
-            <Image
-              src="/assets/epam_logo_light.svg"
-              alt="StaticKit"
-              fill
-              className="object-contain"
-            />
+            <Link href="https://www.epam.com">
+              <Image
+                src="/assets/epam_logo_light.svg"
+                alt="EPAM Systems"
+                fill
+                className="object-contain"
+              />
+            </Link>
           </div>
           <div className="flex justify-center relative">
-            <Image
-              className=" object-contain"
-              src="https://www.libertymutualgroup.com/themes/custom/zurb_foundation_lmg/images/LibertyMutualVerticalLogoWhite-01.svg"
-              alt="Mirage"
-              fill
-            />
+            <Link href="https://www.libertymutual.com">
+              <Image
+                className=" object-contain"
+                src="https://www.libertymutualgroup.com/themes/custom/zurb_foundation_lmg/images/LibertyMutualVerticalLogoWhite-01.svg"
+                alt="Liberty Mutual Insurance Co"
+                fill
+              />
+            </Link>
           </div>
           <div className="flex justify-center relative">
-            <Image
-              src="/assets/logo-brand-stacked.svg"
-              alt="StaticKit"
-              fill
-              className="object-contain "
-            />
+            <Link href="https://www.coxautoinc.com/">
+              <Image
+                src="/assets/logo-brand-stacked.svg"
+                alt="Cox Automotive Inc"
+                fill
+                className="object-contain "
+              />
+            </Link>
           </div>
           <div className="flex justify-center relative">
-            <Image
-              className=" object-contain"
-              src="/assets/melt.svg"
-              alt="Transistor"
-              fill
-            />
+            <Link href="https://www.meltstudio.co">
+              <Image
+                className=" object-contain"
+                src="/assets/melt.svg"
+                alt="Melt Studio"
+                fill
+              />
+            </Link>
           </div>
           <div className="flex justify-center relative">
-            <Image
-              className=" object-contain"
-              src="/assets/litlingo.svg"
-              alt="Workcation"
-              fill
-            />
+            <Link href="https://www.litlingo.com">
+              <Image
+                className=" object-contain"
+                src="/assets/litlingo.svg"
+                alt="Litlingo Technologies"
+                fill
+              />
+            </Link>
           </div>
         </motion.div>
       </div>
