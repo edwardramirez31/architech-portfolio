@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useAnimation, motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
 import { Button } from '../ui/button';
@@ -49,7 +50,7 @@ const Features: React.FunctionComponent = () => {
                 size="lg"
                 className="flex items-center gap-2"
               >
-                See my career highlights
+                <Link href="/resume">See my career highlights</Link>
               </Button>
             </div>
           </div>

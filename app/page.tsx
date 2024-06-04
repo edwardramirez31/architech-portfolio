@@ -1,8 +1,9 @@
 'use client';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 
 import Brands from '@/components/shared/Brands';
 import Features from '@/components/shared/Features';
@@ -44,8 +45,18 @@ const Home: NextPage = () => {
                 size="lg"
                 className="flex items-center gap-2"
               >
-                <span>Explore my resume</span>
-                <FontAwesomeIcon icon={faDownload} className="text-xl" />
+                <span>
+                  <Link
+                    href="https://prime-architech.s3.us-east-1.amazonaws.com/docs/CV_Edward_Ramirez.pdf"
+                    target="_blank"
+                  >
+                    Explore my resume
+                  </Link>
+                </span>
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="text-xl"
+                />
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Social

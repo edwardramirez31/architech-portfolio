@@ -24,7 +24,7 @@ const Social: React.FunctionComponent<{
   return (
     <div className={containerStyles}>
       {socialLinks.map(({ path, icon }) => (
-        <Link key={path} href={path} className={iconStyles}>
+        <Link key={path} href={path} className={iconStyles} target="_blank">
           <FontAwesomeIcon icon={icon} />
         </Link>
       ))}

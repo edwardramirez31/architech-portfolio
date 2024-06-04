@@ -107,6 +107,7 @@ const Footer: React.FunctionComponent = () => {
               key={item.name}
               href={item.href}
               className="text-accent hover:opacity-80"
+              target="_blank"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon />

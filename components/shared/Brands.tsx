@@ -40,7 +40,7 @@ const Brands: React.FunctionComponent = () => {
           className="grid grid-cols-1 gap-8 md:grid-cols-5 h-[400px] md:h-12"
         >
           <div className="flex justify-center relative">
-            <Link href="https://www.epam.com">
+            <Link href="https://www.epam.com" target="_blank">
               <Image
                 src="/assets/epam_logo_light.svg"
                 alt="EPAM Systems"
@@ -50,7 +50,7 @@ const Brands: React.FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex justify-center relative">
-            <Link href="https://www.libertymutual.com">
+            <Link href="https://www.libertymutual.com" target="_blank">
               <Image
                 className=" object-contain"
                 src="https://www.libertymutualgroup.com/themes/custom/zurb_foundation_lmg/images/LibertyMutualVerticalLogoWhite-01.svg"
@@ -60,7 +60,7 @@ const Brands: React.FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex justify-center relative">
-            <Link href="https://www.coxautoinc.com/">
+            <Link href="https://www.coxautoinc.com/" target="_blank">
               <Image
                 src="/assets/logo-brand-stacked.svg"
                 alt="Cox Automotive Inc"
@@ -70,7 +70,7 @@ const Brands: React.FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex justify-center relative">
-            <Link href="https://www.meltstudio.co">
+            <Link href="https://www.meltstudio.co" target="_blank">
               <Image
                 className=" object-contain"
                 src="/assets/melt.svg"
@@ -80,7 +80,7 @@ const Brands: React.FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex justify-center relative">
-            <Link href="https://www.litlingo.com">
+            <Link href="https://www.litlingo.com" target="_blank">
               <Image
                 className=" object-contain"
                 src="/assets/litlingo.svg"
