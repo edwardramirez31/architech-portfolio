@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { useForm as useFormspreeForm } from '@formspree/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -23,6 +24,9 @@ const formSchema = z.object({
 });
 
 const ContactForm: React.FunctionComponent = () => {
+  const [formState, handleSubmit] = useFormspreeForm('xgegojvq');
+  const [showAlert, setShowAlert] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,8 +36,16 @@ const ContactForm: React.FunctionComponent = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>): void {
+  async function onSubmit(values: z.infer<typeof formSchema>): Promise<void> {
     console.log(values);
+    await handleSubmit({
+      ...values,
+    });
+    form.reset();
+    setShowAlert((prevState) => !prevState);
+    setTimeout(() => {
+      setShowAlert((prevState) => !prevState);
+    }, 5000);
   }
 
   return (
@@ -88,7 +100,13 @@ const ContactForm: React.FunctionComponent = () => {
               )}
             />
           </div>
-
+          {showAlert && (
+            <p>
+              {formState.succeeded
+                ? 'Message sent succesfully!'
+                : 'Something went wrong. Try again.'}
+            </p>
+          )}
           <Button
             type="submit"
             variant="default"

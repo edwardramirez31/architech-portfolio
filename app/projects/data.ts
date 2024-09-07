@@ -11,11 +11,59 @@ import {
   PostgreSQLIcon,
   FlaskIcon,
   FirebaseIcon,
+  ApiGatewayIcon,
+  S3Icon,
+  DynamoIcon,
+  LambdaIcon,
 } from '@/components/icons';
 
 export const projects = [
   {
     id: '01',
+    title: 'Desafío Barichara',
+    category: 'Frontend - Cloud - Serverless',
+    description:
+      'Web application designed to promote and sell tickets to a Trail Running and Mountain Biking event in the landscape of Barichara, Colombia. The app features detailed listings of event categories, pricing, prizes, checkout and payments gateway integration with Wompi.',
+    stack: [
+      {
+        icon: ReactIcon,
+        name: 'React',
+      },
+      {
+        icon: LambdaIcon,
+        name: 'AWS Serverless',
+      },
+      {
+        icon: DynamoIcon,
+        name: 'Dynamo DB',
+      },
+      {
+        icon: TailwindIcon,
+        name: 'Tailwind CSS',
+      },
+      {
+        icon: ApiGatewayIcon,
+        name: 'API Gateway',
+      },
+      {
+        icon: S3Icon,
+        name: 'AWS S3',
+      },
+      {
+        icon: SentryIcon,
+        name: 'Sentry',
+      },
+      {
+        icon: TypeScriptIcon,
+        name: 'TypeScript',
+      },
+    ],
+    image: '/assets/projects/barichara.png',
+    live: 'https://www.desafiobarichara.com',
+    github: '',
+  },
+  {
+    id: '02',
     title: 'Pulso Polar',
     category: 'Frontend',
     description:
@@ -43,7 +91,7 @@ export const projects = [
     github: 'https://github.com/edwardramirez31/pulso-polar-frontend',
   },
   {
-    id: '02',
+    id: '03',
     title: 'Crypto Tweets',
     category: 'Frontend',
     description:
@@ -71,7 +119,7 @@ export const projects = [
     github: '',
   },
   {
-    id: '03',
+    id: '04',
     title: 'Suscripciones',
     category: 'Frontend',
     description:
@@ -99,7 +147,7 @@ export const projects = [
     github: '',
   },
   {
-    id: '04',
+    id: '05',
     title: 'Litlingo',
     category: 'Litlingo',
     description:

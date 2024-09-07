@@ -1,35 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useAnimation, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useInView } from 'react-intersection-observer';
 
 import { Button } from '../ui/button';
-import { fadeIn } from '../utils/motion';
 
 const Features: React.FunctionComponent = () => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('show');
-    }
-  }, [controls, inView]);
   return (
-    <motion.section
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={fadeIn('up', 'spring', 0.25, 0.75)}
+    <section
+      // ref={ref}
+      // animate={controls}
+      // initial="hidden"
+      // variants={fadeIn('right', 'spring', 0.25, 0.75)}
       id="servicio"
       className="px-4 mb-10 sm:mb-16 md:h-[500px]"
     >
       <div className="sm:flex flex-wrap md:flex-nowrap h-full">
-        <div className="flex-1 px-4 py-8 self-center">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { delay: 0.5, duration: 0.75, ease: 'easeOut' },
+          }}
+          viewport={{ once: true }}
+          className="flex-1 px-4 py-8 self-center"
+        >
           <div className="md:pl-10">
             <h2 className="text-base font-semibold uppercase text-gray-300">
               Full Stack Engineer
@@ -54,9 +51,18 @@ const Features: React.FunctionComponent = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex-1 px-4 py-8 relative h-80 sm:h-auto">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { delay: 0.75, duration: 0.75, ease: 'easeOut' },
+          }}
+          viewport={{ once: true }}
+          className="flex-1 px-4 py-8 relative h-80 sm:h-auto"
+        >
           <Image
             loading="lazy"
             fill
@@ -64,9 +70,9 @@ const Features: React.FunctionComponent = () => {
             src="/assets/setup/IMG_3564.jpg"
             alt=""
           />
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: -50 }}
             animate={{
               opacity: 1,
               y: 0,

@@ -1,45 +1,38 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useInView } from 'react-intersection-observer';
-
-import { fadeIn, textVariant } from '../utils/motion';
 
 const Brands: React.FunctionComponent = () => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('show');
-    }
-  }, [controls, inView]);
-
   return (
     <section id="companies">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={textVariant(0.5)}
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+          }}
+          viewport={{ once: true }}
         >
           <h3 className="h3 text-center mb-16">
             Worked with the world&apos;s most innovative companies
           </h3>
         </motion.div>
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={fadeIn('up', 'spring', 0.5, 1.25)}
-          className="grid grid-cols-1 gap-8 md:grid-cols-5 h-[400px] md:h-12"
-        >
-          <div className="flex justify-center relative">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-5 h-[400px] md:h-12">
+          <motion.div
+            className="flex justify-center relative"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+            }}
+            viewport={{ once: true }}
+          >
             <Link href="https://www.epam.com" target="_blank">
               <Image
                 src="/assets/epam_logo_light.svg"
@@ -48,8 +41,17 @@ const Brands: React.FunctionComponent = () => {
                 className="object-contain"
               />
             </Link>
-          </div>
-          <div className="flex justify-center relative">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+            }}
+            viewport={{ once: true }}
+            className="flex justify-center relative"
+          >
             <Link href="https://www.libertymutual.com" target="_blank">
               <Image
                 className=" object-contain"
@@ -58,8 +60,17 @@ const Brands: React.FunctionComponent = () => {
                 fill
               />
             </Link>
-          </div>
-          <div className="flex justify-center relative">
+          </motion.div>
+          <motion.div
+            className="flex justify-center relative"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+            }}
+            viewport={{ once: true }}
+          >
             <Link href="https://www.coxautoinc.com/" target="_blank">
               <Image
                 src="/assets/logo-brand-stacked.svg"
@@ -68,8 +79,17 @@ const Brands: React.FunctionComponent = () => {
                 className="object-contain "
               />
             </Link>
-          </div>
-          <div className="flex justify-center relative">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+            }}
+            viewport={{ once: true }}
+            className="flex justify-center relative"
+          >
             <Link href="https://www.meltstudio.co" target="_blank">
               <Image
                 className=" object-contain"
@@ -78,8 +98,17 @@ const Brands: React.FunctionComponent = () => {
                 fill
               />
             </Link>
-          </div>
-          <div className="flex justify-center relative">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
+            }}
+            viewport={{ once: true }}
+            className="flex justify-center relative"
+          >
             <Link href="https://www.litlingo.com" target="_blank">
               <Image
                 className=" object-contain"
@@ -88,8 +117,8 @@ const Brands: React.FunctionComponent = () => {
                 fill
               />
             </Link>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

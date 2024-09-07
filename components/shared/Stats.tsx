@@ -1,19 +1,29 @@
 'use client';
 import React from 'react';
 
+import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
 const stats = [
   // { value: 3, label: 'Years of experience' },
   { value: 20, label: 'Technologies used' },
-  { value: 700, label: 'Pull requests' },
+  { value: 900, label: 'Pull requests' },
   { value: 1000, label: 'AWS resources deployed' },
-  { value: 2000, label: 'Code commits' },
+  { value: 2500, label: 'Code commits' },
 ];
 
 const Stats: React.FunctionComponent = () => {
   return (
-    <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
+    <motion.section
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        transition: { delay: 0.5, duration: 0.75, ease: 'easeOut' },
+      }}
+      viewport={{ once: true }}
+      className="pt-4 pb-12 xl:pt-0 xl:pb-0"
+    >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 max-w-72 xl:max-w-2xl mx-auto xl:mx-0">
           {stats.map(({ value, label }) => (
@@ -39,7 +49,7 @@ const Stats: React.FunctionComponent = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

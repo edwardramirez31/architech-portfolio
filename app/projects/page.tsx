@@ -52,7 +52,7 @@ const Services: NextPage = () => {
                     {project.title}
                   </h2>
                   <div className="flex items-center gap-4">
-                    <Link href={project.live}>
+                    <Link href={project.live} target="_blank">
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger>
@@ -92,10 +92,23 @@ const Services: NextPage = () => {
                 <div>
                   <p className="text-accent mb-4">Tech Stack</p>
                   <ul className="flex flex-wrap justify-center sm:justify-normal gap-6 xl::gap-4">
-                    {project.stack.map((item) => (
-                      <li key={item.name} className="">
+                    {project.stack.map((item, index) => (
+                      <motion.li
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -75 : 75 }}
+                        whileInView={{
+                          opacity: 1,
+                          x: 0,
+                          transition: {
+                            delay: 0.5,
+                            duration: 0.75,
+                            ease: 'easeOut',
+                          },
+                        }}
+                        key={item.name}
+                        className=""
+                      >
                         <CustomIcon icon={item.icon} content={item.name} />
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>

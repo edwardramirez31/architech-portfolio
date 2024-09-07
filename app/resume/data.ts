@@ -83,7 +83,7 @@ export const education = {
     {
       title: 'Michigan University',
       subtitle: 'Python Specialization',
-      date: '2020',
+      date: '2020 - 2021',
     },
     {
       title: 'Michigan University',
@@ -103,7 +103,7 @@ export const education = {
     {
       title: 'Google',
       subtitle: 'Git and GitHub crash course',
-      date: '2020',
+      date: '2021',
     },
   ],
 };
