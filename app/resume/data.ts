@@ -49,7 +49,7 @@ export const experience = {
     },
     {
       title: 'Cox Automotive Inc',
-      subtitle: 'Software Engineer',
+      subtitle: 'Backend Engineer',
       date: 'May 2022 - Nov 2022',
     },
     {
@@ -61,11 +61,6 @@ export const experience = {
       title: 'Melt Studio',
       subtitle: 'Software Developer',
       date: 'Oct 2021 - Dec 2021',
-    },
-    {
-      title: 'Crypto Tweets',
-      subtitle: 'Key Developer',
-      date: 'May 2021 - Sep 2021',
     },
   ],
 };

@@ -38,7 +38,7 @@ const Services: NextPage = () => {
           y: 0,
           transition: { delay: 0.5, duration: 0.5, ease: 'easeInOut' },
         }}
-        className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0"
+        className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 mb-16"
       >
         <div className="container mx-auto">
           <div className="flex flex-col xl:flex-row xl:gap-[30px]">
@@ -106,6 +106,7 @@ const Services: NextPage = () => {
                         }}
                         key={item.name}
                         className=""
+                        viewport={{ once: true }}
                       >
                         <CustomIcon icon={item.icon} content={item.name} />
                       </motion.li>

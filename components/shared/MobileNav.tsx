@@ -33,8 +33,9 @@ const links = [
 
 const MobileNav: React.FunctionComponent = () => {
   const pathName = usePathname();
+  const [open, setOpen] = React.useState(false);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="flex justify-center items-center">
         <FontAwesomeIcon
           className="text-[32px] text-accent"
@@ -43,7 +44,12 @@ const MobileNav: React.FunctionComponent = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <div className="mt-32 mb-40 text-center text-2xl">
-          <Link href="/">
+          <Link
+            href="/"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
             <h1 className="text-4xl font-semibold">
               Edward<span className="text-accent">.</span>
             </h1>
@@ -54,6 +60,9 @@ const MobileNav: React.FunctionComponent = () => {
             <Link
               key={name}
               href={path}
+              onClick={() => {
+                setOpen(false);
+              }}
               className={`${path === pathName && 'text-accent border-b-2 border-accent'} text-xl font-medium hover:text-accent transition-all`}
             >
               {name}
