@@ -29,6 +29,10 @@ const links = [
     name: 'Contact',
     path: '/contact',
   },
+  {
+    name: 'Virtue Quests',
+    path: '/virtue-in-motion',
+  },
 ];
 
 const MobileNav: React.FunctionComponent = () => {

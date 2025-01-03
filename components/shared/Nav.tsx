@@ -21,6 +21,10 @@ const links = [
     name: 'Projects',
     path: '/projects',
   },
+  {
+    name: 'Virtue Quests',
+    path: '/virtue-in-motion',
+  },
 ];
 
 const Nav: React.FunctionComponent = () => {
