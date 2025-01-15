@@ -22,7 +22,7 @@ const links = [
     path: '/projects',
   },
   {
-    name: 'Virtue Quests',
+    name: 'Virtue Path',
     path: '/virtue-in-motion',
   },
 ];

@@ -30,7 +30,7 @@ const links = [
     path: '/contact',
   },
   {
-    name: 'Virtue Quests',
+    name: 'Virtue Path',
     path: '/virtue-in-motion',
   },
 ];

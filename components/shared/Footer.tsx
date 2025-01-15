@@ -7,7 +7,7 @@ const navigation = {
     { name: 'Home', href: '/' },
     { name: 'Resume', href: '/resume' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Virtue Quests', href: '/virtue-in-motion' },
+    { name: 'Virtue Path', href: '/virtue-in-motion' },
     { name: 'Contact', href: '/contact' },
   ],
   social: [

@@ -26,6 +26,23 @@ const Bold = ({ children }: DocumentText): JSX.Element => (
   <span className="font-bold text-gray-900">{children}</span>
 );
 
+const Blockquote = ({ children }: DocumentText): JSX.Element => (
+  <blockquote className="p-4 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
+    <svg
+      className="w-7 h-7 text-gray-400 dark:text-gray-600"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 18 14"
+    >
+      <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+    </svg>
+    <div className="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">
+      {children}
+    </div>
+  </blockquote>
+);
+
 const Heading3 = ({ children }: DocumentText): JSX.Element => (
   <h3 className="my-5 pt-2 text-xl sm:text-2xl text-gray-900 font-bold">
     {children}
@@ -39,7 +56,7 @@ const Heading2 = ({ children }: DocumentText): JSX.Element => (
 );
 
 const Paragraph = ({ children }: DocumentText): JSX.Element => (
-  <p className="my-3 text-lg sm:text-xl">{children}</p>
+  <p className="my-3 text-lg sm:text-xl text-gray-900">{children}</p>
 );
 
 const ListItem = ({ children }: DocumentText): JSX.Element => (
@@ -54,12 +71,12 @@ interface ArticleImageProps {
 }
 
 const ArticleImage = ({ url, alt }: ArticleImageProps): JSX.Element => (
-  <div className="relative h-96 w-full my-4">
+  <div className="relative h-96 xl:h-[500px] w-full my-4">
     <Image
       src={`https:${url}`}
       alt={alt}
       fill
-      className="object-center object-contain rounded-2xl border border-gray300 shadow-lg h-96"
+      className="object-center object-cover rounded-2xl border border-gray300 shadow-lg h-96 xl:h-[500px]"
     />
   </div>
 );
@@ -116,6 +133,10 @@ const options = {
       node: Block | Inline,
       children: React.ReactNode
     ): JSX.Element => <ListItem>{children}</ListItem>,
+    [BLOCKS.QUOTE]: (
+      node: Block | Inline,
+      children: React.ReactNode
+    ): JSX.Element => <Blockquote>{children}</Blockquote>,
     [BLOCKS.PARAGRAPH]: (
       node: Block | Inline,
       children: React.ReactNode
@@ -256,7 +277,7 @@ const PostDetail: React.FunctionComponent<Props> = ({ post }) => {
             <span className="block text-lg text-center text-accent font-semibold tracking-wide uppercase">
               Article
             </span>
-            <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl uppercase">
               {post.fields.title}
             </span>
           </h1>
