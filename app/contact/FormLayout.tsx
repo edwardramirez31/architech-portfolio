@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -44,7 +44,7 @@ const FormLayout: React.FunctionComponent<{
                   className="flex-shrink-0 h-6 w-6 text-accent"
                   aria-hidden="true"
                 />
-                <span className="ml-3">+57 315 3240111</span>
+                <span className="ml-3">+57 312 5712497</span>
               </dd>
             </div>
             <div className="mt-6">
