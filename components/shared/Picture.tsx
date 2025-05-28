@@ -23,7 +23,7 @@ const Picture: React.FunctionComponent = () => {
           className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
           <Image
-            src="/assets/prof2.jpg"
+            src="/assets/IMG_0815_3.jpg"
             priority
             quality={100}
             fill
