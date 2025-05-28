@@ -67,7 +67,7 @@ const Features: React.FunctionComponent = () => {
             loading="lazy"
             fill
             className="w-full h-full object-cover"
-            src="/assets/setup/IMG_3564.jpg"
+            src="/assets/setup/IMG_3564.JPG"
             alt=""
           />
         </motion.div>
