@@ -3,6 +3,7 @@ import {
   BambooIcon,
   DynamoIcon,
   GitHubActionsIcon,
+  KafkaIcon,
   LambdaIcon,
   LinuxIcon,
   LoadBalancerIcon,
@@ -144,11 +145,11 @@ export const techStack = {
 
         {
           icon: LoadBalancerIcon,
-          name: 'Elastic Load Balancing',
+          name: 'Load Balancer',
         },
         {
           icon: SQSIcon,
-          name: 'Simple Queue Service',
+          name: 'Queue Service',
         },
         // {
         //   icon: '/icons/amazons3.svg',
@@ -169,7 +170,7 @@ export const techStack = {
         },
         {
           icon: RDSIcon,
-          name: 'Relational DB Service',
+          name: 'AWS RDS',
         },
         {
           icon: PostgreSQLIcon,
@@ -191,6 +192,10 @@ export const techStack = {
         {
           icon: LinuxIcon,
           name: 'Linux Scripting',
+        },
+        {
+          icon: KafkaIcon,
+          name: 'Kafka',
         },
       ],
     },
