@@ -3,13 +3,6 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-
 interface Props {
   title: string;
   description: string;
@@ -59,16 +52,14 @@ const Skills: React.FunctionComponent<Props> = ({
                   viewport={{ once: true }}
                   key={item.name}
                 >
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                        <div className="text-6xl group-hover:text-accent transition-all duration-300 ">
-                          <item.icon />
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>{item.name}</TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  <div className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center group">
+                    <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                      <item.icon />
+                    </div>
+                    <p className="text-white/60 group-hover:text-accent mt-2 text-center transition-all duration-300">
+                      {item.name}
+                    </p>
+                  </div>
                 </motion.li>
               ))}
             </ul>
