@@ -91,7 +91,7 @@ const Services: NextPage = () => {
                 <p className="text-white/60 text-lg">{project.description}</p>
                 <div>
                   <p className="text-accent mb-4">Tech Stack</p>
-                  <ul className="flex flex-wrap justify-center sm:justify-normal gap-6 xl::gap-4">
+                  <ul className="flex flex-wrap justify-center sm:justify-normal gap-5 xl:gap-3">
                     {project.stack.map((item, index) => (
                       <motion.li
                         initial={{ opacity: 0, x: index % 2 === 0 ? -75 : 75 }}
