@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const CustomIcon: React.FunctionComponent<{
   icon: React.FunctionComponent;
   content: string;
@@ -10,7 +9,9 @@ const CustomIcon: React.FunctionComponent<{
       <div className="text-8xl xl:text-6xl group-hover:text-accent transition-all duration-300">
         <Icon />
       </div>
-      <p className="text-white/60 group-hover:text-accent mt-2 text-center transition-all duration-300">{content}</p>
+      <p className="text-white/60 group-hover:text-accent mt-2 text-center transition-all duration-300">
+        {content}
+      </p>
     </div>
   );
 };
