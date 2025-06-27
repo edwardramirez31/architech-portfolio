@@ -6,8 +6,8 @@ import CountUp from 'react-countup';
 
 const stats = [
   // { value: 3, label: 'Years of experience' },
-  { value: 20, label: 'Technologies used' },
-  { value: 900, label: 'Pull requests' },
+  { value: 25, label: 'Technologies used' },
+  { value: 950, label: 'Pull requests' },
   { value: 1000, label: 'AWS resources deployed' },
   { value: 2500, label: 'Code commits' },
 ];
