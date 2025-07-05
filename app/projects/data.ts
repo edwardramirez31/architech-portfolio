@@ -15,6 +15,10 @@ import {
   S3Icon,
   DynamoIcon,
   LambdaIcon,
+  HtmlIcon,
+  CSSIcon,
+  PHPIcon,
+  JSIcon,
 } from '@/components/icons';
 
 export const projects = [
@@ -31,7 +35,7 @@ export const projects = [
       },
       {
         icon: LambdaIcon,
-        name: 'AWS Serverless',
+        name: 'Lambda',
       },
       {
         icon: DynamoIcon,
@@ -39,11 +43,11 @@ export const projects = [
       },
       {
         icon: TailwindIcon,
-        name: 'Tailwind CSS',
+        name: 'Tailwind',
       },
       {
         icon: ApiGatewayIcon,
-        name: 'API Gateway',
+        name: 'Gateway',
       },
       {
         icon: S3Icon,
@@ -64,6 +68,34 @@ export const projects = [
   },
   {
     id: '02',
+    title: 'ComerciBeef',
+    category: 'Frontend',
+    description:
+      'Developed a modern website for a meat distribution company, designed with a clean and contemporary layout. The site is fully optimized for SEO, helping it rank at the top of Google search results. It highlights the company’s services and history, with the goal of attracting new customers. The site also includes integrated contact forms and job application forms for potential employees.',
+    stack: [
+      {
+        icon: HtmlIcon,
+        name: 'HTML',
+      },
+      {
+        icon: CSSIcon,
+        name: 'CSS',
+      },
+      {
+        icon: PHPIcon,
+        name: 'PHP',
+      },
+      {
+        icon: JSIcon,
+        name: 'JavaScript',
+      },
+    ],
+    image: '/assets/projects/comercibeef.png',
+    live: 'https://www.comercibeef.com',
+    github: '',
+  },
+  {
+    id: '03',
     title: 'Pulso Polar',
     category: 'Frontend',
     description:
@@ -83,7 +115,7 @@ export const projects = [
       },
       {
         icon: TailwindIcon,
-        name: 'Tailwind CSS',
+        name: 'Tailwind',
       },
     ],
     image: '/assets/projects/pulso.png',
@@ -91,7 +123,7 @@ export const projects = [
     github: 'https://github.com/edwardramirez31/pulso-polar-frontend',
   },
   {
-    id: '03',
+    id: '04',
     title: 'Crypto Tweets',
     category: 'Frontend',
     description:
@@ -111,7 +143,7 @@ export const projects = [
       },
       {
         icon: MaterialIcon,
-        name: 'Material UI',
+        name: 'Material',
       },
     ],
     image: '/assets/projects/crypto.png',
@@ -119,7 +151,7 @@ export const projects = [
     github: '',
   },
   {
-    id: '04',
+    id: '05',
     title: 'Suscripciones',
     category: 'Frontend',
     description:
@@ -147,7 +179,7 @@ export const projects = [
     github: '',
   },
   {
-    id: '05',
+    id: '06',
     title: 'Litlingo',
     category: 'Litlingo',
     description:

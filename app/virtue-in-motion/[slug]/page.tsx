@@ -6,7 +6,9 @@ import { getPostEntryBySlug } from '@/app/api/contentful';
 
 const BlogPostDetailPage: NextPage<{
   params: { slug: string };
-}> = async ({ params }) => {
+  searchParams: { [key: string]: string | string[] | undefined };
+}> = async ({ params, searchParams }) => {
+  console.log(searchParams);
   const slug = decodeURIComponent(params.slug);
   const post = await getPostEntryBySlug(slug);
   return (
