@@ -69,9 +69,9 @@ export const projects = [
   {
     id: '02',
     title: 'ComerciBeef',
-    category: 'Frontend - Cloud - Serverless',
+    category: 'Frontend',
     description:
-      'Web application designed to promote and sell tickets to a Trail Running and Mountain Biking event in the landscape of Barichara, Colombia. The app features detailed listings of event categories, pricing, prizes, checkout and payments gateway integration with Wompi.',
+      'Developed a modern website for a meat distribution company, designed with a clean and contemporary layout. The site is fully optimized for SEO, helping it rank at the top of Google search results. It highlights the company’s services and history, with the goal of attracting new customers. The site also includes integrated contact forms and job application forms for potential employees.',
     stack: [
       {
         icon: HtmlIcon,
