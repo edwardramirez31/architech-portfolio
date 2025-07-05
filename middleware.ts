@@ -28,8 +28,6 @@ const spanishSpeakingCountries = [
 export function middleware(request: NextRequest): NextResponse<unknown> {
   // Step 1: Get locale from cookie or Accept-Language header
   const acceptLang = request.headers.get('accept-language') || '';
-  console.log(acceptLang);
-  console.log(request.geo?.country);
   const country = request.geo?.country || 'US';
   const geoLocale = spanishSpeakingCountries.includes(country)
     ? 'es-ES'
@@ -55,5 +53,5 @@ export function middleware(request: NextRequest): NextResponse<unknown> {
 }
 
 export const config = {
-  matcher: ['/virtue-in-motion/:path*'], // apply only to /blog routes
+  matcher: ['/virtue-in-motion', '/virtue-in-motion/:path*'], // apply only to /blog routes
 };

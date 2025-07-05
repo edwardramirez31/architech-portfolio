@@ -22,10 +22,10 @@ const PostsList: React.FunctionComponent<Props> = ({ posts }) => {
             Virtue In Motion
           </h2>
           <p className="mt-4 max-w-4xl mx-auto text-lg sm:text-xl text-gray-500 sm:mt-4">
-            From the deep world of artificial intelligence and machine learning
+            From the deep world of artificial intelligence and computer science
             to the quiet wisdom of philosophy and the thrill of surfing in
-            Colombia, I’m living a life filled with adventure, curiosity, and
-            the pursuit of virtue.
+            Colombia and Brasil, I’m living a life filled with adventure,
+            curiosity, and the pursuit of virtue.
           </p>
           <p className="mt-4 max-w-4xl mx-auto text-lg sm:text-xl text-gray-500 sm:mt-6">
             Below are the key areas I’m exploring, each one contributing to my
