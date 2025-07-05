@@ -9,23 +9,26 @@ const client = createClient({
 });
 
 // Retrieve the list of blog posts from Contentful
-export const getPosts = async (): Promise<
-  Entry<BlogPostEntrySkeleton, undefined, string>[]
-> => {
+export const getPosts = async (
+  locale: string = 'en-US'
+): Promise<Entry<BlogPostEntrySkeleton, undefined, string>[]> => {
   const response = await client.getEntries<BlogPostEntrySkeleton>({
     content_type: 'pageBlogPost',
+    locale,
   });
   return response.items;
 };
 
 // Retrieve the blog detail using the slug
 export const getPostEntryBySlug = async (
-  slug: string
+  slug: string,
+  locale: string = 'en-US'
 ): Promise<Entry<BlogPostEntrySkeleton, undefined, string>> => {
   const response = await client.getEntries<BlogPostEntrySkeleton>({
     content_type: 'pageBlogPost',
     'fields.slug': slug,
     limit: 1,
+    locale,
   });
   return response.items[0];
 };
