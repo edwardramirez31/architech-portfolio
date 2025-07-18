@@ -11,21 +11,12 @@ const BlogPostDetailPage: NextPage<{
 }> = async ({ params, searchParams }) => {
   const slug = decodeURIComponent(params.slug);
   const post = await getPostEntryBySlug(slug, searchParams.locale);
-  console.log('Post Detail:', post);
   const comments = await getComments(slug);
-  console.log('Comment', comments);
-  comments.forEach((comment) => {
-    if (comment.fields.blogPost.fields.slug.toString() === slug) {
-      console.log('Blog Slug:', comment.fields.blogPost.fields.slug);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      console.log('Blog Slug:', comment.fields.blogPost.sys.contentType.sys.id);
-    }
-  });
+
   return (
-    <main>
+    <main className="bg-white">
       <PostDetail post={post} />
-      <PostComments />
+      <PostComments comments={comments} />
     </main>
   );
 };
