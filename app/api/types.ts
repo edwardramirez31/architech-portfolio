@@ -67,5 +67,6 @@ export type CommentEntrySkeletonResponse = {
     text: EntryFieldTypes.Text;
     createdDate: EntryFieldTypes.Text;
     blogPost: EntryFieldTypes.Object<BlogPostEntrySkeleton>;
+    parent?: EntryFieldTypes.Object<CommentEntrySkeletonResponse>;
   };
 };

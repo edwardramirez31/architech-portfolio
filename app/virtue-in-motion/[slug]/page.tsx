@@ -16,7 +16,7 @@ const BlogPostDetailPage: NextPage<{
   return (
     <main className="bg-white">
       <PostDetail post={post} />
-      <PostComments comments={comments} />
+      <PostComments comments={comments} postId={post.sys.id} />
     </main>
   );
 };
