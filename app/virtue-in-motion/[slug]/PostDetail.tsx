@@ -167,7 +167,7 @@ const PostDetail: React.FunctionComponent<Props> = ({ post }) => {
   const postContent = documentToReactComponents(post.fields.content, options);
   // console.log(postContent);
   return (
-    <div className="relative py-16 bg-white overflow-hidden">
+    <div className="relative py-16 overflow-hidden">
       <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
         <div
           className="relative h-full text-lg max-w-prose mx-auto"

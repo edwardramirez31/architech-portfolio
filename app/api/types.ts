@@ -52,3 +52,21 @@ export type BlogPostEntrySkeleton = {
     content: EntryFieldTypes.RichText;
   };
 };
+
+export type CommentEntrySkeletonRequest = {
+  contentTypeId: 'comment';
+  fields: {
+    blogPost: EntryFieldTypes.EntryLink<BlogPostEntrySkeleton>;
+  };
+};
+
+export type CommentEntrySkeletonResponse = {
+  contentTypeId: 'comment';
+  fields: {
+    userName: EntryFieldTypes.Text;
+    text: EntryFieldTypes.Text;
+    createdDate: EntryFieldTypes.Text;
+    blogPost: EntryFieldTypes.Object<BlogPostEntrySkeleton>;
+    parent?: EntryFieldTypes.Object<CommentEntrySkeletonResponse>;
+  };
+};
