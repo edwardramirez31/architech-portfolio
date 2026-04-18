@@ -120,15 +120,38 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
       transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
       className="relative flex items-start xl:mb-0 mb-8"
     >
-      {/* Mobile: left border layout */}
-      <div className="xl:hidden flex gap-4 w-full border-l-2 border-accent/40 pl-4">
+      {/* Mobile: left line layout */}
+      <div className="xl:hidden w-full pl-8">
         <motion.div
-          className="absolute -left-[7px] top-2 w-3 h-3 rounded-full bg-accent"
-          initial={{ scale: 0 }}
+          className="absolute left-0 top-5 w-4 h-4 bg-primary border-2 border-accent z-10"
+          initial={{ scale: 0, rotate: 45 }}
           animate={
-            inView ? { scale: 1, boxShadow: '0 0 6px #00ff99' } : { scale: 0 }
+            inView
+              ? {
+                  scale: 1,
+                  rotate: 45,
+                  boxShadow: [
+                    '0 0 4px #00ff99',
+                    '0 0 12px #00ff99',
+                    '0 0 4px #00ff99',
+                  ],
+                }
+              : { scale: 0, rotate: 45 }
           }
-          transition={{ delay: 0.35, duration: 0.3, ease: 'easeOut' }}
+          transition={
+            inView
+              ? {
+                  scale: { delay: 0.35, duration: 0.3, ease: 'easeOut' },
+                  rotate: { duration: 0 },
+                  boxShadow: {
+                    delay: 0.65,
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  },
+                }
+              : { scale: { duration: 0.2 }, rotate: { duration: 0 } }
+          }
         />
         <Card
           item={item}
@@ -236,9 +259,16 @@ const ExperienceTimeline: React.FC<Props> = ({
       </p>
 
       <div className="relative">
-        {/* Center line — scaleY tied to visibleCount so it only ever grows */}
+        {/* Desktop center line */}
         <motion.div
           className="hidden xl:block absolute left-1/2 -translate-x-1/2 w-[2px] bg-accent/25"
+          style={{ transformOrigin: 'top', height: '100%' }}
+          animate={{ scaleY: visibleCount / details.length }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        />
+        {/* Mobile left line — same grow-and-stay logic */}
+        <motion.div
+          className="block xl:hidden absolute left-[7px] w-[2px] bg-accent/25"
           style={{ transformOrigin: 'top', height: '100%' }}
           animate={{ scaleY: visibleCount / details.length }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
