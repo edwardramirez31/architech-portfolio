@@ -26,7 +26,7 @@ const Services: NextPage = () => {
                 y: 0,
                 transition: { delay: 0.5, duration: 0.5, ease: 'easeInOut' },
               }}
-              className="w-full max-w-[300px]"
+              className="w-full max-w-[380px] xl:max-w-[300px] mx-auto xl:mx-0"
             >
               <TabsList className="flex flex-col w-full max-w-[300px] mx-auto xl:mx-0 gap-6">
                 <TabsTrigger value="experience">Experience</TabsTrigger>
