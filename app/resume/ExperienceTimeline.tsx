@@ -1,7 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
 
 interface ExperienceEntry {
   title: string;
@@ -23,177 +23,184 @@ interface TimelineNodeProps {
   index: number;
   hoveredIndex: number | null;
   onHover: (index: number | null) => void;
+  onVisible: () => void;
 }
+
+const Card: React.FC<{
+  item: ExperienceEntry;
+  index: number;
+  isHovered: boolean;
+  onHover: (index: number | null) => void;
+  scale: number;
+}> = ({ item, index, isHovered, onHover, scale }) => (
+  <motion.div
+    className="bg-[#232329] rounded-xl p-6 w-full cursor-pointer border border-transparent"
+    animate={
+      isHovered
+        ? { borderColor: 'rgba(0,255,153,0.3)' }
+        : { borderColor: 'transparent' }
+    }
+    onMouseEnter={() => onHover(index)}
+    onMouseLeave={() => onHover(null)}
+    whileHover={{ scale }}
+    transition={{ duration: 0.2 }}
+  >
+    <span className="text-accent text-sm font-medium">{item.date}</span>
+    {item.location && (
+      <span className="text-white/40 text-sm ml-3">{item.location}</span>
+    )}
+    <h4 className="text-white/70 text-sm mt-1">{item.subtitle}</h4>
+    <h3 className="text-xl font-bold mt-1">{item.title}</h3>
+
+    {/* Preview: always visible, fades out on hover */}
+    <AnimatePresence>
+      {!isHovered && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="relative mt-3 overflow-hidden"
+        >
+          <p className="flex gap-2 text-white/40 text-sm line-clamp-1">
+            <span className="text-accent shrink-0">▸</span>
+            {item.achievements[0]}
+          </p>
+          <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-[#232329] to-transparent" />
+        </motion.div>
+      )}
+    </AnimatePresence>
+
+    {/* Full list: expands on hover */}
+    <AnimatePresence>
+      {isHovered && (
+        <motion.ul
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="mt-4 space-y-2 overflow-hidden"
+        >
+          {item.achievements.map((achievement, i) => (
+            <li key={i} className="flex gap-2 text-white/60 text-sm">
+              <span className="text-accent mt-1 shrink-0">▸</span>
+              <span>{achievement}</span>
+            </li>
+          ))}
+        </motion.ul>
+      )}
+    </AnimatePresence>
+  </motion.div>
+);
 
 const TimelineNode: React.FC<TimelineNodeProps> = ({
   item,
   index,
   hoveredIndex,
   onHover,
+  onVisible,
 }) => {
   const isLeft = index % 2 === 0;
   const isHovered = hoveredIndex === index;
 
+  const nodeRef = useRef<HTMLLIElement>(null);
+  const inView = useInView(nodeRef, { once: true, margin: '-80px' });
+
+  useEffect(() => {
+    if (inView) onVisible();
+  }, [inView, onVisible]);
+
   return (
     <motion.li
+      ref={nodeRef}
       initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
-      viewport={{ once: true }}
+      animate={
+        inView ? { opacity: 1, x: 0 } : { opacity: 0, x: isLeft ? -100 : 100 }
+      }
+      transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
       className="relative flex items-start xl:mb-0 mb-8"
     >
-      {/* Mobile left border layout */}
+      {/* Mobile: left border layout */}
       <div className="xl:hidden flex gap-4 w-full border-l-2 border-accent/40 pl-4">
-        <div className="absolute -left-[7px] top-2 w-3 h-3 rounded-full bg-accent shadow-[0_0_6px_#00ff99]" />
         <motion.div
-          className="bg-[#232329] rounded-xl p-6 w-full cursor-pointer border border-transparent"
+          className="absolute -left-[7px] top-2 w-3 h-3 rounded-full bg-accent"
+          initial={{ scale: 0 }}
           animate={
-            isHovered
-              ? { borderColor: 'rgba(0,255,153,0.3)' }
-              : { borderColor: 'transparent' }
+            inView ? { scale: 1, boxShadow: '0 0 6px #00ff99' } : { scale: 0 }
           }
-          onMouseEnter={() => onHover(index)}
-          onMouseLeave={() => onHover(null)}
-          whileHover={{ scale: 1.01 }}
-          transition={{ duration: 0.2 }}
-        >
-          <span className="text-accent text-sm font-medium">{item.date}</span>
-          {item.location && (
-            <span className="text-white/40 text-sm ml-3">{item.location}</span>
-          )}
-          <h4 className="text-white/70 text-sm mt-1">{item.subtitle}</h4>
-          <h3 className="text-xl font-bold mt-1">{item.title}</h3>
-          <AnimatePresence>
-            {isHovered && (
-              <motion.ul
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="mt-4 space-y-2 overflow-hidden"
-              >
-                {item.achievements.map((achievement, i) => (
-                  <li key={i} className="flex gap-2 text-white/60 text-sm">
-                    <span className="text-accent mt-1 shrink-0">▸</span>
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </motion.ul>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          transition={{ delay: 0.35, duration: 0.3, ease: 'easeOut' }}
+        />
+        <Card
+          item={item}
+          index={index}
+          isHovered={isHovered}
+          onHover={onHover}
+          scale={1.01}
+        />
       </div>
 
-      {/* Desktop alternating layout */}
+      {/* Desktop: alternating layout */}
       <div className="hidden xl:flex w-full items-start relative min-h-[120px]">
-        {/* Left side */}
-        <div className={`w-[45%] ${isLeft ? 'flex justify-end pr-10' : ''}`}>
+        {/* Left card */}
+        <div className={`w-[48%] ${isLeft ? 'flex justify-end pr-10' : ''}`}>
           {isLeft && (
-            <motion.div
-              className="bg-[#232329] rounded-xl p-6 w-full max-w-[420px] cursor-pointer border border-transparent"
-              animate={
-                isHovered
-                  ? { borderColor: 'rgba(0,255,153,0.3)' }
-                  : { borderColor: 'transparent' }
-              }
-              onMouseEnter={() => onHover(index)}
-              onMouseLeave={() => onHover(null)}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <span className="text-accent text-sm font-medium">
-                {item.date}
-              </span>
-              {item.location && (
-                <span className="text-white/40 text-sm ml-3">
-                  {item.location}
-                </span>
-              )}
-              <h4 className="text-white/70 text-sm mt-1">{item.subtitle}</h4>
-              <h3 className="text-xl font-bold mt-1">{item.title}</h3>
-              <AnimatePresence>
-                {isHovered && (
-                  <motion.ul
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="mt-4 space-y-2 overflow-hidden"
-                  >
-                    {item.achievements.map((achievement, i) => (
-                      <li key={i} className="flex gap-2 text-white/60 text-sm">
-                        <span className="text-accent mt-1 shrink-0">▸</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.div>
+            <Card
+              item={item}
+              index={index}
+              isHovered={isHovered}
+              onHover={onHover}
+              scale={1.02}
+            />
           )}
         </div>
 
-        {/* Center dot connector */}
+        {/* Center diamond dot — rotate kept inside FM to avoid CSS transform conflict */}
         <div className="absolute left-1/2 -translate-x-1/2 flex items-start justify-center z-10 pt-5">
           <motion.div
-            className="w-4 h-4 rotate-45 bg-primary border-2 border-accent"
-            animate={{
-              boxShadow: [
-                '0 0 4px #00ff99',
-                '0 0 12px #00ff99',
-                '0 0 4px #00ff99',
-              ],
-            }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-4 h-4 bg-primary border-2 border-accent"
+            initial={{ scale: 0, rotate: 45 }}
+            animate={
+              inView
+                ? {
+                    scale: 1,
+                    rotate: 45,
+                    boxShadow: [
+                      '0 0 4px #00ff99',
+                      '0 0 12px #00ff99',
+                      '0 0 4px #00ff99',
+                    ],
+                  }
+                : { scale: 0, rotate: 45 }
+            }
+            transition={
+              inView
+                ? {
+                    scale: { delay: 0.35, duration: 0.3, ease: 'easeOut' },
+                    rotate: { duration: 0 },
+                    boxShadow: {
+                      delay: 0.65,
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    },
+                  }
+                : { scale: { duration: 0.2 }, rotate: { duration: 0 } }
+            }
           />
         </div>
 
-        {/* Right side */}
+        {/* Right card */}
         <div
-          className={`w-[45%] ml-auto ${!isLeft ? 'flex justify-start pl-10' : ''}`}
+          className={`w-[48%] ml-auto ${!isLeft ? 'flex justify-start pl-10' : ''}`}
         >
           {!isLeft && (
-            <motion.div
-              className="bg-[#232329] rounded-xl p-6 w-full max-w-[420px] cursor-pointer border border-transparent"
-              animate={
-                isHovered
-                  ? { borderColor: 'rgba(0,255,153,0.3)' }
-                  : { borderColor: 'transparent' }
-              }
-              onMouseEnter={() => onHover(index)}
-              onMouseLeave={() => onHover(null)}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <span className="text-accent text-sm font-medium">
-                {item.date}
-              </span>
-              {item.location && (
-                <span className="text-white/40 text-sm ml-3">
-                  {item.location}
-                </span>
-              )}
-              <h4 className="text-white/70 text-sm mt-1">{item.subtitle}</h4>
-              <h3 className="text-xl font-bold mt-1">{item.title}</h3>
-              <AnimatePresence>
-                {isHovered && (
-                  <motion.ul
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="mt-4 space-y-2 overflow-hidden"
-                  >
-                    {item.achievements.map((achievement, i) => (
-                      <li key={i} className="flex gap-2 text-white/60 text-sm">
-                        <span className="text-accent mt-1 shrink-0">▸</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.div>
+            <Card
+              item={item}
+              index={index}
+              isHovered={isHovered}
+              onHover={onHover}
+              scale={1.02}
+            />
           )}
         </div>
       </div>
@@ -207,6 +214,11 @@ const ExperienceTimeline: React.FC<Props> = ({
   details,
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(0);
+
+  const handleVisible = useCallback(() => {
+    setVisibleCount((c) => Math.min(c + 1, details.length));
+  }, [details.length]);
 
   return (
     <motion.div
@@ -224,8 +236,13 @@ const ExperienceTimeline: React.FC<Props> = ({
       </p>
 
       <div className="relative">
-        {/* Vertical center line — desktop only */}
-        <div className="hidden xl:block absolute left-1/2 -translate-x-1/2 w-[2px] h-full bg-accent/20" />
+        {/* Center line — scaleY tied to visibleCount so it only ever grows */}
+        <motion.div
+          className="hidden xl:block absolute left-1/2 -translate-x-1/2 w-[2px] bg-accent/25"
+          style={{ transformOrigin: 'top', height: '100%' }}
+          animate={{ scaleY: visibleCount / details.length }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        />
 
         <ol className="flex flex-col xl:gap-12">
           {details.map((item, index) => (
@@ -235,6 +252,7 @@ const ExperienceTimeline: React.FC<Props> = ({
               index={index}
               hoveredIndex={hoveredIndex}
               onHover={setHoveredIndex}
+              onVisible={handleVisible}
             />
           ))}
         </ol>
