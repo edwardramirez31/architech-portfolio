@@ -20,7 +20,7 @@ import {
 export const about = {
   title: 'About me',
   description:
-    "Experienced Software Engineer with a passion for cloud architectures and software efficiency. My hands-on experience in front-end, back-end, and DevOps provided a strong foundation for understanding and navigating the dynamic tech landscape. I'm driven by the challenge of optimizing software processes and leveraging technology to solve real-world problems effectively.",
+    'I am a Tech Lead and Cloud Engineer with 4+ years of experience building and modernizing enterprise-scale systems on AWS. Currently leading a 7-engineer distributed team across 4 countries at Liberty Mutual — one of the top 5 property & casualty insurers in the US — through a mission-critical IBM Mainframe-to-cloud modernization program. My work sits at the intersection of technical depth and people leadership: I own architecture decisions, drive stakeholder alignment, and still get hands dirty in the codebase.',
   details: [
     {
       name: 'Name',
@@ -28,11 +28,15 @@ export const about = {
     },
     {
       name: 'Experience',
-      value: '3+ Years',
+      value: '4+ Years',
     },
     {
       name: 'Languages',
-      value: 'Spanish, English',
+      value: 'English, Spanish, Portuguese',
+    },
+    {
+      name: 'Location',
+      value: 'Colombia — Remote / US',
     },
   ],
 };
@@ -41,27 +45,70 @@ export const experience = {
   icon: '',
   title: 'Professional Experience',
   description:
-    'Explore my comprehensive journey across various domains of software engineering, where I have contributed to innovative solutions and enhanced system efficiencies. Below are highlights from my recent roles',
+    'From Mainframe modernization at Fortune 500 scale to distributed team leadership across 4 countries — here is a full view of the roles, problems, and impact that define my engineering career.',
   details: [
     {
-      title: 'EPAM Systems',
-      subtitle: 'Software Engineer',
-      date: 'Dec 2022 - Present',
+      title: 'Tech Lead',
+      subtitle: 'Liberty Mutual — Home Insurance',
+      date: 'Mar 2026 – Present',
+      location: 'Bogotá, Colombia',
+      url: 'https://www.libertymutual.com',
+      achievements: [
+        'I lead a 7-engineer distributed team across 4 countries in an IBM Mainframe-to-AWS modernization program at one of the top 5 P&C insurers in the US',
+        'Architected a real-time data replication pipeline integrating Precisely Connect CDC, Kafka and PostgreSQL — reducing Mainframe IMS database read load by 30%',
+        'Mentoring senior and mid-level engineers daily: unblocking story tickets, preparing stakeholder demos and teaching business domain knowledge.',
+        `Working with Product Owners and stakeholders to decompose client requirements into well-defined backend features.`,
+        'Conducted technical interviews to hire Senior and Mid-level Engineers, growing the team to accelerate modernization delivery',
+      ],
     },
     {
-      title: 'Cox Automotive Inc',
-      subtitle: 'Backend Engineer',
-      date: 'May 2022 - Nov 2022',
+      title: 'Senior Software Engineer',
+      subtitle: 'Liberty Mutual — Auto Insurance',
+      date: 'Oct 2024 – Feb 2026',
+      location: 'Bogotá, Colombia',
+      url: 'https://www.libertymutual.com',
+      achievements: [
+        'Designed and launched a Mainframe-to-cloud data comparison service that identified and resolved 50%+ of replication errors across the full PostgreSQL schema',
+        'Reduced bulk data insert errors by 90% by engineering a pipeline using temporary PostgreSQL tables and auto-scaling Lambda functions to clean, process, and ingest terabytes of data reliably',
+        'Built a resilient data-cleaning and encryption service for sensitive customer records, implementing retry logic, concurrency control, and rate-limit handling against third-party APIs',
+        'Resolved 80+ API data discrepancies sprint-over-sprint between the Mainframe and cloud APIs, maintaining a zero-backlog defect policy across the entire project lifecycle',
+      ],
     },
     {
-      title: 'LitLingo Technologies',
-      subtitle: 'Full Stack Engineer',
-      date: 'Jan 2022 - Apr 2022',
+      title: 'Software Engineer',
+      subtitle: 'Liberty Mutual — Surety Division',
+      date: 'May 2022 – Sep 2024',
+      location: 'Bogotá, Colombia',
+      url: 'https://www.libertymutual.com',
+      achievements: [
+        'Led production support and incident response for a critical serverless AWS application',
+        "Worked as technical and cultural bridge between US Product Owners and engineering teams in Colombia and Chile, enabling Liberty Mutual's product expansion into LATAM markets",
+        'Built AWS CDK infrastructure-as-code for deploying S3, Lambda, IAM Roles, Glue Crawlers, and KMS Keys',
+        'Implemented an ETL pipeline migrating data from Parquet files to Oracle DB using AWS Glue and Athena, orchestrated via Step Functions',
+        'Developed presigned URL handling for large XML file ingestion, improving system resilience and reducing errors in high-volume data processing workflows',
+      ],
     },
     {
-      title: 'Melt Studio',
-      subtitle: 'Software Developer',
-      date: 'Oct 2021 - Dec 2021',
+      title: 'Full Stack Engineer',
+      subtitle: 'LitLingo Technologies — AI Communication Compliance SaaS',
+      date: 'Jan 2022 – Apr 2022',
+      location: 'Medellín, Colombia',
+      url: 'https://www.litlingo.com',
+      achievements: [
+        'Built and maintained a TypeScript + React analytics dashboard supporting real-time compliance monitoring features',
+        'Optimized data retrieval for dashboard analytics using SQLAlchemy within a Flask backend',
+        'Integrated CI/CD pipelines using GitHub Actions and semantic versioning',
+      ],
+    },
+    {
+      title: 'Software Engineer',
+      subtitle: 'Melt Studio',
+      date: 'Oct 2021 – Dec 2021',
+      location: 'Medellín, Colombia',
+      url: 'https://www.meltstudio.co',
+      achievements: [
+        'Delivered React features in an agile team, implementing Redux Saga for state management and securing online payment flows',
+      ],
     },
   ],
 };
