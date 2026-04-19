@@ -61,15 +61,20 @@ The portfolio should include the following sections in this order:
 
 ## Where to Find Structured Data
 
-| Data                                             | Location                                                                        |
-| ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| Full career narrative                            | `docs/career-context.md`                                                        |
-| Structured career data (roles, skills, projects) | `data/career.json` — [TODO: create this file]                                   |
-| Blog posts                                       | Contentful CMS via `app/api/contentful.ts`                                      |
-| Project list                                     | `app/projects/data.ts`                                                          |
-| Resume PDF                                       | `https://prime-architech.s3.us-east-1.amazonaws.com/docs/CV_Edward_Ramirez.pdf` |
-| Tech stack icons                                 | `components/icons/index.tsx`                                                    |
-| Stats                                            | `components/shared/Stats.tsx`                                                   |
+| Data                                | Location                                                                        |
+| ----------------------------------- | ------------------------------------------------------------------------------- |
+| Full career narrative               | `docs/career-context.md`                                                        |
+| Blog posts                          | Contentful CMS via `app/api/contentful.ts`                                      |
+| Resume PDF                          | `https://prime-architech.s3.us-east-1.amazonaws.com/docs/CV_Edward_Ramirez.pdf` |
+| Tech stack icons                    | `components/icons/index.tsx`                                                    |
+| Stats                               | `components/shared/Stats.tsx`                                                   |
+| Projects list                       | `app/projects/data.ts`                                                          |
+| Work experience or education        | `app/resume/data.ts` → `experience` / `education`                               |
+| Tech stack on Resume > Skills       | `app/resume/data.ts` → `techStack`                                              |
+| About bio text                      | `app/resume/data.ts` → `about`                                                  |
+| Company logos on home page          | `components/shared/Brands.tsx`                                                  |
+| Social media links (header/contact) | `components/shared/Social.tsx`                                                  |
+| Social media links (footer)         | `components/shared/Footer.tsx`                                                  |
 
 ---
 
@@ -84,7 +89,7 @@ This is a **Next.js 14** application using the App Router.
 - **CMS:** Contentful (blog posts)
 - **Forms:** Formspree + React Hook Form + Zod
 - **Icons:** FontAwesome + custom SVG components
-- **Deployment:** [TODO: confirm hosting — Vercel assumed]
+- **Deployment:** Vercel
 
 ### Theme Tokens
 
@@ -119,51 +124,33 @@ colors: {
 - **Portfolio:** https://primearchitech.com
 - **Email:** edal_ramirez@hotmail.com
 
----
-
-## TODO Items for Edward to Complete Manually
-
-- [ ] Create `data/career.json` with structured role, skills, and project data
-- [ ] Confirm deployment platform (Vercel assumed)
-- [ ] Add AWS certification details to education section if desired
-- [ ] Update `components/shared/Stats.tsx` with current engineer and country counts
-- [ ] Confirm current start availability for contact/about section
-- [ ] Add any new projects to `app/projects/data.ts`
-
----
-
-_This file is the primary briefing document for any Claude Code agent working on
-this repository. Read `docs/career-context.md` for the full career narrative._
-
----
-
 ## /app Directory — Routes & File Map
 
-| File / Folder | Type | Purpose |
-|---|---|---|
-| `app/layout.tsx` | Root Layout | Global wrapper: sets Raleway font, renders Header + Footer on every page |
-| `app/page.tsx` | Page (Client) | Landing/hero: headline, CTA buttons (resume PDF + socials), animated profile picture, Brands carousel |
-| `app/projects/page.tsx` | Page (Client) | Swiper carousel of 6 projects; selecting a slide shows title, description, stack icons, live/GitHub links |
-| `app/projects/data.ts` | Data | Array of 6 project objects: `{ id, title, category, description, stack, image, live, github }` |
-| `app/resume/page.tsx` | Page (Client) | Radix UI Tabs: Experience / Education / Skills / About — side nav + content panel |
-| `app/resume/data.ts` | Data | Four exported objects: `about`, `experience`, `education`, `techStack` |
-| `app/resume/About.tsx` | Component | About tab content: bio + Stats component |
-| `app/resume/ResumeItem.tsx` | Component | Scrollable timeline list for experience and education tabs |
-| `app/resume/Skills.tsx` | Component | Grid of four tech-category boxes with hoverable icon cards |
-| `app/contact/page.tsx` | Page (Client) | Renders FormLayout wrapping ContactForm |
-| `app/contact/ContactForm.tsx` | Component | Name / Email / Message form → Formspree (`xgegojvq`); React Hook Form + Zod validation; success/error alert auto-dismisses after 5 s |
-| `app/contact/FormLayout.tsx` | Component | Split-screen: contact info left, form children right; staggered Framer Motion reveal |
-| `app/services/page.tsx` | Page | Placeholder — not yet implemented |
-| `app/virtue-in-motion/page.tsx` | Page (Server) | Fetches all posts from Contentful, renders PostsList; locale-aware via middleware |
-| `app/virtue-in-motion/PostsList.tsx` | Component | Hero section + 3-column responsive grid of PostEntry cards |
-| `app/virtue-in-motion/PostEntry.tsx` | Component | Post card: featured image (600×400), truncated description (200 chars), author avatar, date, link to detail |
-| `app/virtue-in-motion/[slug]/page.tsx` | Page (Server) | Decodes slug, fetches post + comments from Contentful, renders PostDetail + PostComments |
-| `app/virtue-in-motion/[slug]/PostDetail.tsx` | Component | Rich-text renderer (Contentful `documentToReactComponents`); custom renderers for headings, code blocks, images; Python syntax highlighting |
-| `app/virtue-in-motion/[slug]/PostComments.tsx` | Component | Comment form (name + text) → Contentful Management API; lists comments newest-first; local state update on submit |
-| `app/api/contentful.ts` | API Util | Contentful Delivery client: `getPosts(locale)`, `getPostEntryBySlug(slug, locale)`, `getComments(slug)` |
-| `app/api/management.ts` | API Util | Contentful Management client: `managementClient`, `SPACE_ID` — used to create/publish comments |
-| `app/api/types.ts` | Types | Contentful entry skeletons: `BlogPostEntrySkeleton`, `CommentEntrySkeletonRequest/Response`, Author, Image types |
-| `middleware.ts` | Middleware | Detects `Accept-Language` header; sets locale cookie for blog (Spanish / English) |
+| File / Folder                                  | Type          | Purpose                                                                                                                                     |
+| ---------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app/layout.tsx`                               | Root Layout   | Global wrapper: sets Raleway font, renders Header + Footer on every page                                                                    |
+| `app/page.tsx`                                 | Page (Client) | Landing/hero: headline, CTA buttons (resume PDF + socials), animated profile picture, Brands carousel                                       |
+| `app/projects/page.tsx`                        | Page (Client) | Swiper carousel of 6 projects; selecting a slide shows title, description, stack icons, live/GitHub links                                   |
+| `app/projects/data.ts`                         | Data          | Array of 6 project objects: `{ id, title, category, description, stack, image, live, github }`                                              |
+| `app/resume/page.tsx`                          | Page (Client) | Radix UI Tabs: Experience / Education / Skills / About — side nav + content panel                                                           |
+| `app/resume/data.ts`                           | Data          | Four exported objects: `about`, `experience`, `education`, `techStack`                                                                      |
+| `app/resume/About.tsx`                         | Component     | About tab content: bio + Stats component                                                                                                    |
+| `app/resume/ResumeItem.tsx`                    | Component     | Scrollable timeline list for experience and education tabs                                                                                  |
+| `app/resume/Skills.tsx`                        | Component     | Grid of four tech-category boxes with hoverable icon cards                                                                                  |
+| `app/contact/page.tsx`                         | Page (Client) | Renders FormLayout wrapping ContactForm                                                                                                     |
+| `app/contact/ContactForm.tsx`                  | Component     | Name / Email / Message form → Formspree (`xgegojvq`); React Hook Form + Zod validation; success/error alert auto-dismisses after 5 s        |
+| `app/contact/FormLayout.tsx`                   | Component     | Split-screen: contact info left, form children right; staggered Framer Motion reveal                                                        |
+| `app/services/page.tsx`                        | Page          | Placeholder — not yet implemented                                                                                                           |
+| `app/virtue-in-motion/page.tsx`                | Page (Server) | Fetches all posts from Contentful, renders PostsList; locale-aware via middleware                                                           |
+| `app/virtue-in-motion/PostsList.tsx`           | Component     | Hero section + 3-column responsive grid of PostEntry cards                                                                                  |
+| `app/virtue-in-motion/PostEntry.tsx`           | Component     | Post card: featured image (600×400), truncated description (200 chars), author avatar, date, link to detail                                 |
+| `app/virtue-in-motion/[slug]/page.tsx`         | Page (Server) | Decodes slug, fetches post + comments from Contentful, renders PostDetail + PostComments                                                    |
+| `app/virtue-in-motion/[slug]/PostDetail.tsx`   | Component     | Rich-text renderer (Contentful `documentToReactComponents`); custom renderers for headings, code blocks, images; Python syntax highlighting |
+| `app/virtue-in-motion/[slug]/PostComments.tsx` | Component     | Comment form (name + text) → Contentful Management API; lists comments newest-first; local state update on submit                           |
+| `app/api/contentful.ts`                        | API Util      | Contentful Delivery client: `getPosts(locale)`, `getPostEntryBySlug(slug, locale)`, `getComments(slug)`                                     |
+| `app/api/management.ts`                        | API Util      | Contentful Management client: `managementClient`, `SPACE_ID` — used to create/publish comments                                              |
+| `app/api/types.ts`                             | Types         | Contentful entry skeletons: `BlogPostEntrySkeleton`, `CommentEntrySkeletonRequest/Response`, Author, Image types                            |
+| `middleware.ts`                                | Middleware    | Detects `Accept-Language` header; sets locale cookie for blog (Spanish / English)                                                           |
 
 ---
 
@@ -171,24 +158,24 @@ this repository. Read `docs/career-context.md` for the full career narrative._
 
 ### `/components/shared/` — Layout & global UI
 
-| File | Purpose |
-|---|---|
-| `Header.tsx` | Top nav bar — brand ("Edward."), desktop Nav, mobile MobileNav, "Get in touch" CTA |
-| `Nav.tsx` | Desktop nav: Home, Resume, Projects, Virtue Path — active link underline via `usePathname()` |
-| `MobileNav.tsx` | Radix UI Sheet (slide-out) — same links as desktop; closes on navigation |
-| `Footer.tsx` | Footer: main links (+ Contact) + social icons (Facebook, Instagram, Threads, GitHub inline SVG), copyright |
-| `Social.tsx` | Reusable social link group: LinkedIn, GitHub, YouTube (FontAwesome); accepts `containerStyles` / `iconStyles` props |
-| `Features.tsx` | "Discover My Professional Journey" section on home page — left text/CTA, right desk-setup image; slide-in animations |
-| `Picture.tsx` | Animated hero photo — circular image with rotating SVG stroke border; 298×298 mobile / 498×498 desktop |
-| `Brands.tsx` | Company logo carousel — EPAM, Liberty Mutual, Cox Automotive, Melt Studio, LitLingo; staggered slide-up |
-| `Stats.tsx` | Animated metrics — 25+ Technologies, 950+ PRs, 1000+ AWS resources, 2500+ commits; `react-countup` (3 s, 1 s delay) |
+| File            | Purpose                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Header.tsx`    | Top nav bar — brand ("Edward."), desktop Nav, mobile MobileNav, "Get in touch" CTA                                   |
+| `Nav.tsx`       | Desktop nav: Home, Resume, Projects, Virtue Path — active link underline via `usePathname()`                         |
+| `MobileNav.tsx` | Radix UI Sheet (slide-out) — same links as desktop; closes on navigation                                             |
+| `Footer.tsx`    | Footer: main links (+ Contact) + social icons (Facebook, Instagram, Threads, GitHub inline SVG), copyright           |
+| `Social.tsx`    | Reusable social link group: LinkedIn, GitHub, YouTube (FontAwesome); accepts `containerStyles` / `iconStyles` props  |
+| `Features.tsx`  | "Discover My Professional Journey" section on home page — left text/CTA, right desk-setup image; slide-in animations |
+| `Picture.tsx`   | Animated hero photo — circular image with rotating SVG stroke border; 298×298 mobile / 498×498 desktop               |
+| `Brands.tsx`    | Company logo carousel — EPAM, Liberty Mutual, Cox Automotive, Melt Studio, LitLingo; staggered slide-up              |
+| `Stats.tsx`     | Animated metrics — 25+ Technologies, 950+ PRs, 1000+ AWS resources, 2500+ commits; `react-countup` (3 s, 1 s delay)  |
 
 ### `/components/icons/` — SVG icon library
 
-| File | Purpose |
-|---|---|
-| `index.tsx` | 40+ named SVG icon components: AWS (Lambda, API Gateway, DynamoDB, S3, SQS, RDS, EventBridge, SNS, LoadBalancer), frameworks (React, Next.js, Node.js, TypeScript, Python, Django, Flask, Tailwind, Material UI), databases (PostgreSQL, MongoDB, Firebase), DevOps (GitHub Actions, Bamboo, Linux, Kafka). Each exports a `React.FC` with `fill="currentColor"` and an SVG `<title>` for accessibility. |
-| `CustomIcon.tsx` | Icon + label card — props: `icon: React.FC`, `content: string`; 190×190 px mobile / 125×125 px desktop; hover turns label to accent color |
+| File             | Purpose                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `index.tsx`      | 40+ named SVG icon components: AWS (Lambda, API Gateway, DynamoDB, S3, SQS, RDS, EventBridge, SNS, LoadBalancer), frameworks (React, Next.js, Node.js, TypeScript, Python, Django, Flask, Tailwind, Material UI), databases (PostgreSQL, MongoDB, Firebase), DevOps (GitHub Actions, Bamboo, Linux, Kafka). Each exports a `React.FC` with `fill="currentColor"` and an SVG `<title>` for accessibility. |
+| `CustomIcon.tsx` | Icon + label card — props: `icon: React.FC`, `content: string`; 190×190 px mobile / 125×125 px desktop; hover turns label to accent color                                                                                                                                                                                                                                                                |
 
 ### `/components/ui/` — shadcn/ui primitives
 
@@ -219,14 +206,14 @@ Staggered lists alternate items from left (`x: -100`) and right (`x: 100`). Stic
 
 Current routes registered in Nav / MobileNav:
 
-| Label | Path |
-|---|---|
-| Home | `/` |
-| Resume | `/resume` |
-| Projects | `/projects` |
-| Virtue Path | `/virtue-in-motion` |
-| Contact | `/contact` (Header CTA + Footer only) |
-| Services | `/services` (placeholder, not in nav) |
+| Label       | Path                                  |
+| ----------- | ------------------------------------- |
+| Home        | `/`                                   |
+| Resume      | `/resume`                             |
+| Projects    | `/projects`                           |
+| Virtue Path | `/virtue-in-motion`                   |
+| Contact     | `/contact` (Header CTA + Footer only) |
+| Services    | `/services` (placeholder, not in nav) |
 
 **Before adding or renaming a route**, update `components/shared/Nav.tsx`, `components/shared/MobileNav.tsx`, and `components/shared/Footer.tsx`.
 
@@ -248,18 +235,3 @@ NEXT_PUBLIC_CONTENTFUL_SPACE_ID=
 ```
 
 ---
-
-## Data Locations Quick Reference (updated)
-
-| What you want to change | File to edit |
-|---|---|
-| Projects list | `app/projects/data.ts` |
-| Work experience or education | `app/resume/data.ts` → `experience` / `education` |
-| Tech stack on Resume > Skills | `app/resume/data.ts` → `techStack` |
-| About bio text | `app/resume/data.ts` → `about` |
-| Animated stats numbers | `components/shared/Stats.tsx` |
-| Company logos on home page | `components/shared/Brands.tsx` |
-| Social media links (header/contact) | `components/shared/Social.tsx` |
-| Social media links (footer) | `components/shared/Footer.tsx` |
-| Blog posts | Contentful CMS (never hardcode) |
-| Add a new SVG icon | `components/icons/index.tsx` — follow existing pattern |
