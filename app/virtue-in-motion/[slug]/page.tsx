@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 
 import PostComments from './PostComments';
 import PostDetail from './PostDetail';
+import ReadingProgress from './ReadingProgress';
 
 import { getComments, getPostEntryBySlug } from '@/app/api/contentful';
 
@@ -14,7 +15,8 @@ const BlogPostDetailPage: NextPage<{
   const comments = await getComments(slug);
 
   return (
-    <main className="bg-white">
+    <main className="bg-[#1c1c22] min-h-screen">
+      <ReadingProgress />
       <PostDetail post={post} />
       <PostComments comments={comments} postId={post.sys.id} />
     </main>
