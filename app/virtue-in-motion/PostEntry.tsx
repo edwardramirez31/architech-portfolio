@@ -8,13 +8,9 @@ import type { BlogPostEntrySkeleton } from '../api/types';
 
 interface Props {
   post: Entry<BlogPostEntrySkeleton, undefined, string>;
-  featured?: boolean;
 }
 
-const PostEntry: React.FunctionComponent<Props> = ({
-  post,
-  featured = false,
-}) => {
+const PostEntry: React.FunctionComponent<Props> = ({ post }) => {
   const isoDate = new Date(post.fields.publishedDate as string)
     .toISOString()
     .slice(0, 10);
@@ -33,9 +29,7 @@ const PostEntry: React.FunctionComponent<Props> = ({
       className="group relative flex h-full flex-col overflow-hidden rounded-xl border-t-2 border-accent bg-[#232329]"
     >
       {/* Featured image */}
-      <div
-        className={`relative flex-shrink-0 ${featured ? 'h-72 lg:h-96' : 'h-52'} w-full`}
-      >
+      <div className="relative flex-shrink-0 h-52 w-full">
         <Image className="object-cover" src={imageUrl} alt={imageAlt} fill />
         {/* Subtle dark gradient overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#232329] via-transparent to-transparent opacity-60" />
@@ -50,9 +44,7 @@ const PostEntry: React.FunctionComponent<Props> = ({
           </span>
 
           {/* Title */}
-          <p
-            className={`font-semibold text-white transition-colors duration-300 group-hover:text-accent ${featured ? 'text-2xl lg:text-3xl' : 'text-xl'}`}
-          >
+          <p className="font-semibold text-white transition-colors duration-300 group-hover:text-accent text-xl">
             {title}
           </p>
 
