@@ -38,7 +38,7 @@ const Features: React.FunctionComponent = () => {
               Leverage my full-stack expertise in frontend, backend, and DevOps
               to solve complex challenges effectively. My approach integrates
               all phases of development to deliver robust, end-to-end solutions.
-              Explore my resume to see how I've led modernization at scale.
+              Explore my resume to see how I&apos;ve led modernization at scale.
             </p>
             <div className="mt-8">
               <Button

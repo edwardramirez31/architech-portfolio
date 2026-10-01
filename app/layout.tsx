@@ -16,7 +16,8 @@ const jetbrainsMono = Raleway({
 
 export const metadata: Metadata = {
   title: 'Edward Ramirez',
-  description: 'Edward Ramirez — Tech Lead in cloud modernization, AWS Serverless and AI-native development.',
+  description:
+    'Edward Ramirez — Tech Lead in cloud modernization, AWS Serverless and AI-native development.',
 };
 
 const RootLayout: React.FunctionComponent<

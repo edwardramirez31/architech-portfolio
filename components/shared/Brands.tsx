@@ -19,7 +19,7 @@ const Brands: React.FunctionComponent = () => {
           viewport={{ once: true }}
         >
           <h3 className="h3 text-center mb-16">
-            Companies I've worked with
+            Companies I&apos;ve worked with
           </h3>
         </motion.div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 h-[400px] md:h-12">
