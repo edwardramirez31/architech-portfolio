@@ -54,11 +54,11 @@ export const experience = {
       location: 'Bogotá, Colombia',
       url: 'https://www.libertymutual.com',
       achievements: [
-        'I lead a 7-engineer distributed team across 4 countries in an IBM Mainframe-to-AWS modernization program at one of the top 5 P&C insurers in the US',
-        'Architected a real-time data replication pipeline integrating Precisely Connect CDC, Kafka and PostgreSQL — reducing Mainframe IMS database read load by 30%',
-        'Mentoring senior and mid-level engineers daily: unblocking story tickets, preparing stakeholder demos and teaching business domain knowledge.',
-        `Working with Product Owners and stakeholders to decompose client requirements into well-defined backend features.`,
-        'Conducted technical interviews to hire Senior and Mid-level Engineers, growing the team to accelerate modernization delivery',
+        'Lead 6 engineers, a QA and a BA across 4 countries modernizing a P&C policy platform with 1.8M+ active home and auto policies and 26M+ policy transactions a year (new business, endorsements, renewals, cancellations, reinstatements).',
+        'Architected a near-real-time replica API (Precisely CDC → Kafka → PostgreSQL) serving ~50M requests/month at 170+ peak RPS, cutting P95 latency 65% and P99 45% vs. the legacy mainframe API.',
+        'Built an AI-assisted validation pipeline (rules → MCP live-data checks → confidence-gated LLM classification → human review), cutting triage of ~9,500 bi-weekly discrepancies from 3 days to 2–4 hours and saving 300+ engineering hours a year; adopted by 2 more teams.',
+        `Led the policy data integration that enabled Liberty's customer-service platform, used by 23,000 daily users, to service the Renters line of business, delivering all actionable scope within an 8-week milestone.`,
+        'Act as technical decision-maker on API contracts and domain models: blocked a proposed fix that would have misclassified policy reactivations as cancellations, and designed a typed Umbrella exposure schema across DB2 and IMS sources.',
       ],
     },
     {
@@ -68,10 +68,11 @@ export const experience = {
       location: 'Bogotá, Colombia',
       url: 'https://www.libertymutual.com',
       achievements: [
-        'Designed and launched a Mainframe-to-cloud data comparison service that identified and resolved 50%+ of replication errors across the full PostgreSQL schema',
+        'Migrated nearly 1B records across 270+ tables from IBM IMS to PostgreSQL on AWS, orchestrating extraction, Kafka publishing and ingestion through Node.js Kafka consumers and Lambda functions into PostgreSQL and DynamoDB.',
+        'Designed and launched a mainframe-to-cloud comparison service that detects replication discrepancies early, enabling developers to remediate defects before they reach downstream API consumers.',
         'Reduced bulk data insert errors by 90% by engineering a pipeline using temporary PostgreSQL tables and auto-scaling Lambda functions to clean, process, and ingest terabytes of data reliably',
         'Built a resilient data-cleaning and encryption service for sensitive customer records, implementing retry logic, concurrency control, and rate-limit handling against third-party APIs',
-        'Resolved 80+ API data discrepancies sprint-over-sprint between the Mainframe and cloud APIs, maintaining a zero-backlog defect policy across the entire project lifecycle',
+        'Ran technical spikes and proofs of concept to evaluate architectural approaches, improve system performance and de-risk critical design decisions.',
       ],
     },
     {

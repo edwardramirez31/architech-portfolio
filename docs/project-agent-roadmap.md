@@ -45,7 +45,7 @@
 **Domain:** Next.js App Router SEO, structured data, social previews.
 **Core responsibilities:**
 - Add per-page `generateMetadata` (title, description, canonical) to every route; fix the root
-  `description: 'Primer Architech portfolio'` typo in `app/layout.tsx`.
+  `description: 'Edward Ramirez — Tech Lead in cloud modernization, AWS Serverless and AI-native development.'` typo in `app/layout.tsx`.
 - Add OpenGraph + Twitter card metadata and an OG image strategy for home, resume, projects, and blog posts.
 - Emit JSON-LD structured data: `Person` (Edward), `Article` (blog posts), `BreadcrumbList`.
 - Generate `app/sitemap.ts` and `app/robots.ts`; ensure blog post URLs are included (Contentful-driven).

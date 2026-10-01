@@ -22,7 +22,7 @@ const links = [
     path: '/projects',
   },
   {
-    name: 'Virtue Path',
+    name: 'Blog',
     path: '/virtue-in-motion',
   },
 ];

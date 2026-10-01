@@ -29,7 +29,7 @@ const Features: React.FunctionComponent = () => {
         >
           <div className="md:pl-10">
             <h2 className="text-base font-semibold uppercase text-gray-300">
-              Full Stack Engineer
+              Tech Lead · Full Stack Engineer
             </h2>
             <p className="mt-2 text-white text-3xl font-semibold tracking-tight sm:text-4xl">
               Discover My Professional Journey
@@ -38,8 +38,7 @@ const Features: React.FunctionComponent = () => {
               Leverage my full-stack expertise in frontend, backend, and DevOps
               to solve complex challenges effectively. My approach integrates
               all phases of development to deliver robust, end-to-end solutions.
-              Explore my resume to see how I can drive success for your
-              projects.
+              Explore my resume to see how I've led modernization at scale.
             </p>
             <div className="mt-8">
               <Button

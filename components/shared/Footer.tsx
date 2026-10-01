@@ -7,7 +7,7 @@ const navigation = {
     { name: 'Home', href: '/' },
     { name: 'Resume', href: '/resume' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Virtue Path', href: '/virtue-in-motion' },
+    { name: 'Blog', href: '/virtue-in-motion' },
     { name: 'Contact', href: '/contact' },
   ],
   social: [
@@ -116,7 +116,7 @@ const Footer: React.FunctionComponent = () => {
           ))}
         </div>
         <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2025 Edward Ramirez. All rights reserved.
+          &copy; 2026 Edward Ramirez. All rights reserved.
         </p>
       </div>
     </footer>

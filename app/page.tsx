@@ -33,10 +33,7 @@ const Home: NextPage = () => {
               <br /> <span className="h1 text-accent">into tech realities</span>
             </h1>
             <p className="max-w-[500px] mt-3 mb-9 text-white/80">
-              I excel in leveraging backend systems that serve as the backbone
-              for critical business operations, managing over thousands
-              cloud-based resources. Join me in redefining technological
-              boundaries.
+              I lead the modernization of mission-critical insurance platforms from mainframe to AWS: 50M+ API requests a month, 1.8M+ active policies, and AI-assisted workflows that save 300+ engineering hours a year.
               {/* Discover my projects or drop me a line! */}
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">

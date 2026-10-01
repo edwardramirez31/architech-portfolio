@@ -250,7 +250,7 @@ transition={{ duration: 0.3, ease: 'easeInOut' }}
 
 **W7 — Page metadata is off-brand**
 - **Where:** `app/layout.tsx` line 18
-- **What:** `description: 'Primer Architech portfolio'` — typo ("Primer" should be "Prime") and not indexed for recruiter searches. Title is just "Edward Ramirez" with no role context.
+- **What:** `description: 'Edward Ramirez — Tech Lead in cloud modernization, AWS Serverless and AI-native development.'` — typo ("Primer" should be "Prime") and not indexed for recruiter searches. Title is just "Edward Ramirez" with no role context.
 - **Why it hurts:** SEO and sharing previews (LinkedIn, Slack) show off-brand description.
 - **Priority:** Medium
 

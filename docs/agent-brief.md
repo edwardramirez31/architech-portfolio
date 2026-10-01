@@ -13,7 +13,7 @@ Edward (the site owner) personally, and the main Claude Code thread delegating S
 Next.js 14 App Router SEO — metadata API, structured data (JSON-LD), social previews (OpenGraph/Twitter), sitemap/robots, and on-page semantic/accessibility-for-SEO concerns. TypeScript (strict), Tailwind, Contentful-driven blog.
 
 ## Core responsibilities
-- Add per-page `generateMetadata` (title, description, canonical) to every route, and fix the root `description: 'Primer Architech portfolio'` typo in `app/layout.tsx` (→ "Prime Architech").
+- Add per-page `generateMetadata` (title, description, canonical) to every route, and fix the root `description: 'Edward Ramirez — Tech Lead in cloud modernization, AWS Serverless and AI-native development.'` typo in `app/layout.tsx` (→ "Prime Architech").
 - Add OpenGraph + Twitter card metadata and an OG-image strategy for home, resume, projects, and blog post pages.
 - Emit JSON-LD structured data: `Person` (Edward), `Article` (blog posts), `BreadcrumbList`.
 - Generate `app/sitemap.ts` and `app/robots.ts`, including Contentful-driven blog post URLs (`/virtue-in-motion/[slug]`).

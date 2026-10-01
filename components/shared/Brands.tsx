@@ -19,10 +19,10 @@ const Brands: React.FunctionComponent = () => {
           viewport={{ once: true }}
         >
           <h3 className="h3 text-center mb-16">
-            Worked with the world&apos;s most innovative companies
+            Companies I've worked with
           </h3>
         </motion.div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5 h-[400px] md:h-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 h-[400px] md:h-12">
           <motion.div
             className="flex justify-center relative"
             initial={{ opacity: 0, y: 100 }}
@@ -58,25 +58,6 @@ const Brands: React.FunctionComponent = () => {
                 src="https://www.libertymutualgroup.com/themes/custom/zurb_foundation_lmg/images/LibertyMutualVerticalLogoWhite-01.svg"
                 alt="Liberty Mutual Insurance Co"
                 fill
-              />
-            </Link>
-          </motion.div>
-          <motion.div
-            className="flex justify-center relative"
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { delay: 0.5, duration: 1.25, ease: 'easeOut' },
-            }}
-            viewport={{ once: true }}
-          >
-            <Link href="https://www.coxautoinc.com/" target="_blank">
-              <Image
-                src="/assets/logo-brand-stacked.svg"
-                alt="Cox Automotive Inc"
-                fill
-                className="object-contain "
               />
             </Link>
           </motion.div>
